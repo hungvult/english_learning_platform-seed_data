@@ -110,9 +110,14 @@ def upsert_user(
     hearts: int = 5,
     gems: int = 0,
     current_streak: int = 0,
+    active_course_id=None,
 ) -> User:
     obj = session.exec(select(User).where(User.email == email)).first()
     if obj:
+        if active_course_id is not None and obj.active_course_id != active_course_id:
+            obj.active_course_id = active_course_id
+            session.add(obj)
+            session.flush()
         print(f"  [seed]  User exists: {email}")
         return obj
     obj = User(
@@ -126,6 +131,7 @@ def upsert_user(
         hearts=hearts,
         gems=gems,
         current_streak=current_streak,
+        active_course_id=active_course_id,
         last_activity_at=datetime.now(timezone.utc),
         created_at=datetime.now(timezone.utc),
     )
@@ -197,7 +203,7 @@ COURSES = [
         ],
     },
     {
-        "title": "Tieng Anh",
+        "title": "Tiếng Anh",
         "level": "A1",
         "units": [
             {
@@ -225,6 +231,46 @@ COURSES = [
                 ],
             },
         ],
+    },
+    {
+        "title": "Sample 1",
+        "level": "A1",
+        "units": [],
+    },
+    {
+        "title": "Sample 2",
+        "level": "A1",
+        "units": [],
+    },
+    {
+        "title": "Sample 3",
+        "level": "A1",
+        "units": [],
+    },
+    {
+        "title": "Sample 4",
+        "level": "A1",
+        "units": [],
+    },
+    {
+        "title": "Sample 5",
+        "level": "A1",
+        "units": [],
+    },
+    {
+        "title": "Sample 6",
+        "level": "A1",
+        "units": [],
+    },
+    {
+        "title": "Sample 7",
+        "level": "A1",
+        "units": [],
+    },
+    {
+        "title": "Sample 8",
+        "level": "A1",
+        "units": [],
     },
 ]
 
@@ -338,6 +384,23 @@ def run():
         for u in USERS:
             user = upsert_user(session, **u)
             seeded_users[u["username"]] = user
+
+        # Ensure explicit active course (attending course) is set for learners
+        if "alice" in seeded_users:
+            english_course = session.exec(
+                select(Course).where(Course.title == "English")
+            ).first()
+            if english_course and seeded_users["alice"].active_course_id != english_course.id:
+                seeded_users["alice"].active_course_id = english_course.id
+                session.add(seeded_users["alice"])
+
+        if "bob" in seeded_users:
+            tieng_anh_course = session.exec(
+                select(Course).where(Course.title == "Tieng Anh")
+            ).first()
+            if tieng_anh_course and seeded_users["bob"].active_course_id != tieng_anh_course.id:
+                seeded_users["bob"].active_course_id = tieng_anh_course.id
+                session.add(seeded_users["bob"])
 
         # -- User lesson progress --------------------------------------------
         # alice: completed first 4 lessons of English Unit 1 (B1)
