@@ -120,10 +120,10 @@ EXERCISES = [
     {
         "type": "COMPLETE_TRANSLATION",
         "question_data": {
-            "source_sentence": "My name is Hung.",
-            "text_template": "Tên của tôi là {0}.",
+            source_sentence: "Chào buổi chiều",
+            text_template: "{0}",
         },
-        "answer_data": {"correct_words": ["Hung"]},
+        "answer_data": {"correct_words": ["Good afternoon"]},
     },
     {
         "type": "ARRANGE_WORDS",
@@ -166,7 +166,7 @@ EXERCISES = [
     {
         "type": "SPEAK_SENTENCE",
         "question_data": {
-            # sentence is duplicated in expected_text
+            "sentence": "Hello, how are you?",
         },
         "answer_data": {"expected_text": "Hello, how are you?"},
     },
