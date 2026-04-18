@@ -166,7 +166,7 @@ EXERCISES = [
     {
         "type": "SPEAK_SENTENCE",
         "question_data": {
-            "sentence": "Hello, how are you?",
+            # sentence is duplicated in expected_text
         },
         "answer_data": {"expected_text": "Hello, how are you?"},
     },
