@@ -232,46 +232,6 @@ COURSES = [
             },
         ],
     },
-    {
-        "title": "Sample 1",
-        "level": "A1",
-        "units": [],
-    },
-    {
-        "title": "Sample 2",
-        "level": "A1",
-        "units": [],
-    },
-    {
-        "title": "Sample 3",
-        "level": "A1",
-        "units": [],
-    },
-    {
-        "title": "Sample 4",
-        "level": "A1",
-        "units": [],
-    },
-    {
-        "title": "Sample 5",
-        "level": "A1",
-        "units": [],
-    },
-    {
-        "title": "Sample 6",
-        "level": "A1",
-        "units": [],
-    },
-    {
-        "title": "Sample 7",
-        "level": "A1",
-        "units": [],
-    },
-    {
-        "title": "Sample 8",
-        "level": "A1",
-        "units": [],
-    },
 ]
 
 LESSON_FORM_NAMES = ["new knowledge", "review", "test"]

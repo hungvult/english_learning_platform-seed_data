@@ -86,7 +86,10 @@ def upsert_exercise(
         )
     ).first()
     if existing:
-        print(f"    [seed] Exercise exists: {exercise_type.name}")
+        existing.question_data = question_data
+        existing.answer_data = answer_data
+        session.add(existing)
+        print(f"    [seed] Exercise updated: {exercise_type.name}")
         return
 
     ex = Exercise(
@@ -106,7 +109,6 @@ EXERCISES = [
     {
         "type": "COMPLETE_CONVERSATION",
         "question_data": {
-            "instruction": "Choose the best response",
             "text": "Can I have some water?",
             "options": [
                 {"id": "1", "text": "Yes, here you go."},
@@ -118,7 +120,6 @@ EXERCISES = [
     {
         "type": "COMPLETE_TRANSLATION",
         "question_data": {
-            "instruction": "Translate the missing word",
             "source_sentence": "My name is Hung.",
             "text_template": "Tên của tôi là {0}.",
         },
@@ -127,7 +128,6 @@ EXERCISES = [
     {
         "type": "ARRANGE_WORDS",
         "question_data": {
-            "instruction": "Arrange the words",
             "tokens": ["chicken", "I", "like", "would"],
         },
         "answer_data": {"correct_sequence": ["I", "would", "like", "chicken"]},
@@ -135,7 +135,6 @@ EXERCISES = [
     {
         "type": "PICTURE_MATCH",
         "question_data": {
-            "instruction": "Select the correct image for 'Coffee'",
             "word": "Coffee",
             "options": [
                 {"id": "1", "text": "Cà phê", "image_url": "/media/coffee.png"},
@@ -147,7 +146,6 @@ EXERCISES = [
     {
         "type": "TYPE_HEAR",
         "question_data": {
-            "instruction": "Type what you hear",
             "text": "Nice to meet you.",
         },
         "answer_data": {"correct_transcription": "Nice to meet you."},
@@ -155,7 +153,7 @@ EXERCISES = [
     {
         "type": "LISTEN_FILL",
         "question_data": {
-            "instruction": "Listen and select the words",
+            "text": "apple juice please",
             "word_bank": [
                 {"id": "1", "text": "apple"},
                 {"id": "2", "text": "juice"},
@@ -168,7 +166,6 @@ EXERCISES = [
     {
         "type": "SPEAK_SENTENCE",
         "question_data": {
-            "instruction": "Speak this sentence",
             "sentence": "Hello, how are you?",
         },
         "answer_data": {"expected_text": "Hello, how are you?"},
