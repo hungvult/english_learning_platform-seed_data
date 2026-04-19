@@ -147,7 +147,6 @@ def upsert_progress(
     user: User,
     lesson: Lesson,
     score: int,
-    mistakes: int,
     days_ago: int = 0,
 ) -> None:
     existing = session.exec(
@@ -162,7 +161,6 @@ def upsert_progress(
         user_id=user.id,
         lesson_id=lesson.id,
         score=score,
-        mistakes=mistakes,
         completed_at=datetime.now(timezone.utc) - timedelta(days=days_ago),
     )
     session.add(progress)
@@ -374,7 +372,6 @@ def run():
                     user=alice,
                     lesson=lesson,
                     score=100 - (lesson_order - 1) * 5,   # 100, 95, 90, 85
-                    mistakes=lesson_order - 1,             # 0, 1, 2, 3
                     days_ago=4 - lesson_order,
                 )
 
@@ -388,7 +385,6 @@ def run():
                     user=bob,
                     lesson=lesson,
                     score=100 - (lesson_order - 1) * 10,  # 100, 90
-                    mistakes=lesson_order,                 # 1, 2
                     days_ago=2 - lesson_order,
                 )
 
