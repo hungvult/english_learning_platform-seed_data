@@ -75,7 +75,7 @@ def upsert_exercise(
     session: Session,
     lesson_id: uuid.UUID,
     exercise_type: ExerciseType,
-    question_data: dict,
+    question_data: dict | None,
     answer_data: dict,
 ) -> None:
     """Insert exercise only if no exercise of same type already exists for this lesson."""
@@ -120,8 +120,8 @@ EXERCISES = [
     {
         "type": "COMPLETE_TRANSLATION",
         "question_data": {
-            source_sentence: "Chào buổi chiều",
-            text_template: "{0}",
+            "source_sentence": "Chào buổi chiều",
+            "text_template": "{0}",
         },
         "answer_data": {"correct_words": ["Good afternoon"]},
     },
@@ -145,9 +145,7 @@ EXERCISES = [
     },
     {
         "type": "TYPE_HEAR",
-        "question_data": {
-            "text": "Nice to meet you.",
-        },
+        "question_data": None,
         "answer_data": {"correct_transcription": "Nice to meet you."},
     },
     {
@@ -165,9 +163,7 @@ EXERCISES = [
     },
     {
         "type": "SPEAK_SENTENCE",
-        "question_data": {
-            "sentence": "Hello, how are you?",
-        },
+        "question_data": {},
         "answer_data": {"expected_text": "Hello, how are you?"},
     },
 ]
