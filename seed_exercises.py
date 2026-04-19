@@ -163,7 +163,7 @@ EXERCISES = [
     },
     {
         "type": "SPEAK_SENTENCE",
-        "question_data": {},
+        "question_data": None,
         "answer_data": {"expected_text": "Hello, how are you?"},
     },
 ]
