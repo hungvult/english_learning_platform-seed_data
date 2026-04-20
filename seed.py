@@ -205,27 +205,27 @@ COURSES = [
         "level": "A1",
         "units": [
             {
-                "title": "Bai 1 - Chao hoi co ban",
+                "title": "Bài 1 - Chào hỏi cơ bản",
                 "order": 1,
                 "lessons": [
-                    ("Xin chao & Tam biet",         "new knowledge", 1),
-                    ("Gioi thieu ban than",          "new knowledge", 2),
-                    ("So dem 1-20",                  "new knowledge", 3),
-                    ("Mau sac & Hinh dang",          "new knowledge", 4),
-                    ("On tap: Chao hoi",             "review",        5),
-                    ("Kiem tra: Chao hoi",           "test",          6),
+                    ("Xin chào & Tạm biệt",         "new knowledge", 1),
+                    ("Giới thiệu bản thân",         "new knowledge", 2),
+                    ("Số đếm 1-20",                 "new knowledge", 3),
+                    ("Màu sắc & Hình dạng",         "new knowledge", 4),
+                    ("Ôn tập: Chào hỏi",            "review",        5),
+                    ("Kiểm tra: Chào hỏi",          "test",          6),
                 ],
             },
             {
-                "title": "Bai 2 - Gia dinh & Ban be",
+                "title": "Bài 2 - Gia đình & Bạn bè",
                 "order": 2,
                 "lessons": [
-                    ("Thanh vien gia dinh",          "new knowledge", 1),
-                    ("Tinh tu mo ta",                "new knowledge", 2),
-                    ("Do vat trong nha",             "new knowledge", 3),
-                    ("Dong vat & Thien nhien",       "new knowledge", 4),
-                    ("On tap: Gia dinh",             "review",        5),
-                    ("Kiem tra: Gia dinh",           "test",          6),
+                    ("Thành viên gia đình",         "new knowledge", 1),
+                    ("Tính từ mô tả",               "new knowledge", 2),
+                    ("Đồ vật trong nhà",            "new knowledge", 3),
+                    ("Động vật & Thiên nhiên",      "new knowledge", 4),
+                    ("Ôn tập: Gia đình",            "review",        5),
+                    ("Kiểm tra: Gia đình",          "test",          6),
                 ],
             },
         ],
@@ -354,7 +354,7 @@ def run():
 
         if "bob" in seeded_users:
             tieng_anh_course = session.exec(
-                select(Course).where(Course.title == "Tieng Anh")
+                select(Course).where(Course.title == "Tiếng Anh")
             ).first()
             if tieng_anh_course and seeded_users["bob"].active_course_id != tieng_anh_course.id:
                 seeded_users["bob"].active_course_id = tieng_anh_course.id
@@ -375,10 +375,10 @@ def run():
                     days_ago=4 - lesson_order,
                 )
 
-        # bob: completed first 2 lessons of Tieng Anh Unit 1 (A1)
+        # bob: completed first 2 lessons of Tiếng Anh Unit 1 (A1)
         bob = seeded_users["bob"]
         for lesson_order in range(1, 3):
-            lesson = lesson_map.get(("Tieng Anh", 1, lesson_order))
+            lesson = lesson_map.get(("Tiếng Anh", 1, lesson_order))
             if lesson:
                 upsert_progress(
                     session,

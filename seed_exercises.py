@@ -1,6 +1,6 @@
 """
-Seed exercises for Tieng Anh A1 — Unit 1, Lesson 1
-("Xin chao & Tam biet" — Basic Greetings, self-introduction, airplane requests)
+Seed exercises for Tiếng Anh A1 — Unit 1, Lesson 1
+("Xin chào & Tạm biệt" — Basic Greetings, self-introduction, airplane requests)
 
 Covers all 7 exercise types:
   1. COMPLETE_CONVERSATION
@@ -173,8 +173,8 @@ EXERCISES = [
 
 def run():
     with Session(engine) as session:
-        print("[seed-exercises] Resolving lesson: Tieng Anh → Unit 1 → Lesson 1")
-        lesson = find_lesson(session, "Tieng Anh", 1, 1)
+        print("[seed-exercises] Resolving lesson: Tiếng Anh → Unit 1 → Lesson 1")
+        lesson = find_lesson(session, "Tiếng Anh", 1, 1)
         if not lesson:
             print("[seed-exercises] Target lesson not found. Run the main seed first.")
             sys.exit(1)
