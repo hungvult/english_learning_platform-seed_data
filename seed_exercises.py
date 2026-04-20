@@ -137,8 +137,8 @@ EXERCISES = [
         "question_data": {
             "word": "Coffee",
             "options": [
-                {"id": "1", "text": "Cà phê", "image_url": "/media/coffee.png"},
-                {"id": "2", "text": "Trà",    "image_url": "/media/tea.png"},
+                {"id": "1", "text": "Cà phê", "image_url": "images/coffee.jpg"},
+                {"id": "2", "text": "Trà",    "image_url": "images/tea.jpg"},
             ],
         },
         "answer_data": {"correct_option_id": "1"},
