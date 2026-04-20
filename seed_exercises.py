@@ -128,9 +128,9 @@ EXERCISES = [
     {
         "type": "ARRANGE_WORDS",
         "question_data": {
-            "tokens": ["chicken", "I", "like", "would"],
+            "tokens": ["chicken", "I", "like"],
         },
-        "answer_data": {"correct_sequence": ["I", "would", "like", "chicken"]},
+        "answer_data": {"correct_sequence": ["I", "like", "chicken"]},
     },
     {
         "type": "PICTURE_MATCH",
